@@ -281,10 +281,7 @@ const ProductForm = ({ editingProduct, onSaved, onCancel }) => {
               <input type="checkbox" id="es_novedad" name="es_novedad" className="form-check-input" checked={values.es_novedad} onChange={handleChange} />
               <label htmlFor="es_novedad" className="form-check-label">Es novedad</label>
             </div>
-            <div className="col-md-4 form-check pt-3 ps-5">
-              <input type="checkbox" id="estado_producto" name="estado_producto" className="form-check-input" checked={values.estado_producto} onChange={handleChange} />
-              <label htmlFor="estado_producto" className="form-check-label">Activo</label>
-            </div>
+            
 
             {/* --- CAMPOS GENERALES (SIEMPRE VISIBLES) --- */}
             <div className="col-12 border-top pt-2 mt-3"><h6 className="text-muted">Datos Generales</h6></div>
