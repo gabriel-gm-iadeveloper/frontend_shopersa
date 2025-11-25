@@ -56,20 +56,16 @@ const ContactPage = () => {
 
         setStatus({ loading: true, error: null, success: null });
         try {
-            await apiClient.post('/contacto', formData);
+            // Esta línea ahora funcionará porque el endpoint existe
+            await apiClient.post('/contacto', formData); 
+            
+            toast.success('¡Mensaje enviado con éxito!');
             setStatus({ loading: false, error: null, success: '¡Mensaje enviado! Te contactaremos pronto.' });
             setFormData({ nombre: '', email: '', mensaje: '' });
         } catch (err) {
             console.error(err);
-            // Si el error es 404 es porque el endpoint no existe (falso positivo en pruebas), 
-            // pero asumimos éxito para la demo si el backend no tiene este endpoint real.
-            if(err.response && err.response.status === 404){
-                 setStatus({ loading: false, error: null, success: '¡Mensaje enviado! (Simulado)' });
-                 setFormData({ nombre: '', email: '', mensaje: '' });
-            } else {
-                toast.error('Error al enviar el mensaje.');
-                setStatus({ loading: false, error: 'No se pudo enviar el mensaje. Intenta nuevamente.', success: null });
-            }
+            toast.error('No se pudo enviar el mensaje. Intenta nuevamente.');
+            setStatus({ loading: false, error: 'No se pudo enviar el mensaje. Intenta nuevamente.', success: null });
         }
     };
 
